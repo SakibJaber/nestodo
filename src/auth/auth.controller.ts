@@ -11,7 +11,7 @@ export class AuthController {
   @UseGuards(AuthGuard('local'))
   login(@Req() req) {
     const user: User = req.user;
-    console.log(user);
+    console.log(user +"LOGIN");
 
     const payload = {
       userId: user.id,
@@ -20,7 +20,7 @@ export class AuthController {
       email: user.email,
       role: user.role,
     };
-    console.log(payload);
+    console.log(payload+"Payload");
 
     return { token: this.jwtService.sign(payload) };
   }

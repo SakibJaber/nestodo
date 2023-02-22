@@ -15,7 +15,7 @@ import { JwtStrategy } from './strategy/jwt.strategy';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        secret: 'ifheufe',
+        secret: 'secret',
         signOptions: {
           expiresIn: 3600,
         },

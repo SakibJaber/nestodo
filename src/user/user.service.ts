@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+// import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
@@ -13,17 +13,17 @@ export class UserService {
   ) {}
 
   create(createUserDto: CreateUserDto) {
-    //  const newUser = this.userRepository.create(createUserDto);
-    // return this.userRepository.save(newUser);
+    //  const user = this.userRepository.create(createUserDto);
+    // return this.userRepository.save(user);
 
-    let newUser: User = new User();
-    newUser.firstName = createUserDto.firstName;
-    newUser.lastName = createUserDto.lastName;
-    newUser.email = createUserDto.email;
-    newUser.password = createUserDto.password;
-    newUser.role = Constants.ROLES.NORMAL_ROLE;
+    let user: User = new User();
+    user.firstName = createUserDto.firstName;
+    user.lastName = createUserDto.lastName;
+    user.email = createUserDto.email;
+    user.password = createUserDto.password;
+    user.role = Constants.ROLES.NORMAL_ROLE;
 
-    return this.userRepository.save(newUser);
+    return this.userRepository.save(user);
   }
 
   findUserById(id: number) {
