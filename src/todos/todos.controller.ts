@@ -10,18 +10,20 @@ import {
 } from '@nestjs/common';
 import { TodosService } from './todos.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
+import { ApiSecurity, ApiTags } from '@nestjs/swagger';
 
-
+@ApiTags('Todo')
+@ApiSecurity('JWT-auth')
 @Controller('todos')
 export class TodosController {
   constructor(private readonly todosService: TodosService) {};
 
-  @Post(':id')
+  @Post(':userId')
   create(
     @Body(ValidationPipe) createTodoDto: CreateTodoDto,
-    @Param('id') id: number,
+    @Param('userId') userId: number,
   ) {
-    return this.todosService.create(createTodoDto, Number(+id));
+    return this.todosService.create(createTodoDto, Number(+userId));
   }
 
   @Get('/findAllNC/:userId')
